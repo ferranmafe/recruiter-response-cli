@@ -26,5 +26,5 @@ def get_response(
         print("Language not supported!")
 
 
-if __name__ == "__main__":
+def main():
     app()
