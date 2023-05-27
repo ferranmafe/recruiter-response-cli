@@ -1,15 +1,20 @@
 import typer
-from enum import Enum
+from rich import Table
 
 app = typer.Typer()
 
-class SupportedLanguages(Enum):
-    EN = "en"
-    ES = "es"
-
 
 @app.command("set")
-def set_response():
+def set_response(
+    title: str = typer.Option(help="Title of the response snippet"),
+    description: str = typer.Option(help="Content of the response for the recruiter"),
+    language: str = typer.Option(help="Language in which to store the response")
+):
+    pass
+
+
+@app.command("list")
+def list_responses():
     pass
 
 
@@ -18,12 +23,7 @@ def get_response(
         recruiter_name: str = typer.Option(help="Name of the recruiter to respond to"),
         lang: str = typer.Option(help="Language in which to return the response")
     ):
-    if lang == SupportedLanguages.EN:
-        print(f"Hello {recruiter_name}!")
-    elif lang == SupportedLanguages.ES:
-        print(f"¡Hola {recruiter_name}!")
-    else:
-        print("Language not supported!")
+    print(f"Hello {recruiter_name}!")
 
 
 def main():
