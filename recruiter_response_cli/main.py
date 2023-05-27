@@ -1,13 +1,20 @@
 import typer
 from enum import Enum
 
+app = typer.Typer()
 
 class SupportedLanguages(Enum):
     EN = "en"
     ES = "es"
 
 
-def response_generator(
+@app.command("set")
+def set_response():
+    pass
+
+
+@app.command("get")
+def get_response(
         recruiter_name: str = typer.Option(help="Name of the recruiter to respond to"),
         lang: str = typer.Option(help="Language in which to return the response")
     ):
@@ -20,4 +27,4 @@ def response_generator(
 
 
 if __name__ == "__main__":
-    typer.run(response_generator)
+    app()
